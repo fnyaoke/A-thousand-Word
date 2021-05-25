@@ -12,11 +12,11 @@ def index(request):
     return render(request, 'index.html', {'title':title, 'images':images, 'locations':locations})
 
 def single(request,category_name,image_id):
-    # images = Image.get_image_by_id(image_id)
+    images = Image.get_image_by_id(image_id)
     title = 'Image'
     locations = Location.objects.all()
-    # category = Category.get_category_id(id = image_category)
     image_category = Image.objects.filter(image_category__name = category_name)
+    category = Category.get_category_id(id = image_category)
     try:
         image = Image.objects.get(id = image_id)
     except ObjectDoesNotExist:
@@ -48,13 +48,6 @@ def location_filter(request, image_location):
     return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
 
 
-
-
-
-
-
-
-
-# def category(request,search_term):
-#     categories = Image.get_image_by_cat(search_term)
-#     return render(request, 'category.html', {"categories": categories})
+def category(request,search_term):
+    categories = Image.get_image_by_cat(search_term)
+    return render(request, 'category.html', {"categories": categories})
