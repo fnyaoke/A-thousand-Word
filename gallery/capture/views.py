@@ -9,7 +9,7 @@ def index(request):
     locations = Location.objects.all()
     title = 'A Thousand Words'
 
-    return render(request, 'index.html', {'title':title, 'images':images, 'locations':locations})
+    return render(request, 'index.html', {'title':title, 'image':images, 'location':locations})
 
 def single(request,category_name,image_id):
     images = Image.get_image_by_id(image_id)
@@ -34,7 +34,7 @@ def search_image(request):
         print(search_term)
         print(found_results)
 
-        return render(request, 'search.html',{'title':title,'images': found_results, 'message': message, 'categories': categories, "locations":locations})
+        return render(request, 'search.html',{'title':title,'image': found_results, 'message': message, 'categories': categories, "locations":locations})
     else:
         message = 'You have not searched yet'
         return render(request, 'search.html',{"message": message})
@@ -45,7 +45,7 @@ def location_filter(request, image_location):
     location = Location.get_location_id(image_location)
     images = Image.filter_by_location(image_location)
     title = f'{location} Photos'
-    return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
+    return render(request, 'location.html', {'title':title, 'image':images, 'locations':locations, 'location':location})
 
 
 def category(request,search_term):

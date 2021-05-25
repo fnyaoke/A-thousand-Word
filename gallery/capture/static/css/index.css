@@ -193,7 +193,7 @@ div.container.imageloc{
     padding-top: 40px;
 }
 .banner{
-background: url(../images/carousel1.jpg) no-repeat 0px 0px;
+background: url(../images/journey.jpg) no-repeat 0px 0px;
 background-size:cover;
 background-position: center;
 -webkit-background-size: cover;
@@ -214,7 +214,7 @@ min-height: 400px;
     background: rgba(0,0,0,0.8)
 }
 .banner-1{
-background: url(../images/carousel2) no-repeat 0px 0px;
+background: url(../images/shutter.png) no-repeat 0px 0px;
 background-size:cover;
 background-position: center;
 -webkit-background-size: cover;
