@@ -1,6 +1,10 @@
-from django.http  import HttpResponse, Http404
+from django.http  import HttpResponse,Http404
 from django.shortcuts import render
 from .models import Image, Location, Category,ObjectDoesNotExist
+from django import forms
+
+from cloudinary.forms import cl_init_js_callbacks
+from .forms import PhotoForm
 
 # Create your views here.
 
@@ -51,3 +55,12 @@ def location_filter(request, image_location):
 def category(request,search_term):
     categories = Image.get_image_by_cat(search_term)
     return render(request, 'category.html', {"categories": categories})
+
+def upload(request):
+    context = dict( backend_form = PhotoForm())
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        context['posted'] = form.instance
+    if form.is_valid():
+        form.save()
+    return render(request, 'single.html', context)
