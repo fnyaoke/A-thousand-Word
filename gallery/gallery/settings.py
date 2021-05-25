@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
+
 import os
+import django_heroku
+import dj_database_url
+from decouple import config, Csv
+from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -35,15 +39,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
     'capture',
+    # 'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap4',
-    # 'cloudinary',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -90,7 +97,7 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Gallery',
+        'NAME': 'gallery',
         'USER': 'moringa',
         'PASSWORD': 'Access'
     }
