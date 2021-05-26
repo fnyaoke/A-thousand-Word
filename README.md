@@ -2,6 +2,7 @@
 
 This project is a gallery of pictures from various places.
 A picture is worth a thousand words.......walk a little into my world of every thousand words!
+view on <https://a-thousand-word.herokuapp.com/>
 
 ## Getting Started
 
